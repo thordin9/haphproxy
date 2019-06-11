@@ -3,33 +3,30 @@
 namespace Jalle19\HaPHProxy\Test;
 
 use Jalle19\HaPHProxy\Parser;
+use PHPUnit\Framework\TestCase;
+use Jalle19\HaPHProxy\Exception\FileNotFoundException;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Class ParserTest
  * @package Jalle19\HaPHProxy\Test
  */
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
-
-	/**
-	 * @expectedException \Jalle19\HaPHProxy\Exception\FileNotFoundException
-	 */
 	public function testFileNotFound()
 	{
+		$this->expectException(FileNotFoundException::class);
 		new Parser('/nonexisting');
 	}
 
-
-	/**
-	 * @expectedException \Jalle19\HaPHProxy\Exception\FileNotFoundException
-	 */
 	public function testFileFoundButUnreadable()
 	{
 		$filePath = tempnam(sys_get_temp_dir(), 'foo');
 
 		touch($filePath);
 		chmod($filePath, 0000);
-
+		$this->expectException(FileNotFoundException::class);
 		new Parser($filePath);
 	}
 

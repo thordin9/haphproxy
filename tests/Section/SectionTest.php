@@ -3,12 +3,12 @@
 namespace Jalle19\HaPHProxy\Test\Section;
 
 use Jalle19\HaPHProxy\Parameter\Parameter;
-
+use PHPUnit\Framework\TestCase;
 /**
  * Class SectionTest
  * @package Jalle19\HaPHProxy\Test\Section
  */
-class SectionTest extends \PHPUnit_Framework_TestCase
+class SectionTest extends TestCase
 {
 
 	public function testParameters()

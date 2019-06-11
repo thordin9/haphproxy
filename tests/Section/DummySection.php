@@ -3,6 +3,7 @@
 namespace Jalle19\HaPHProxy\Test\Section;
 
 use Jalle19\HaPHProxy\Section\AbstractSection;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class DummySection

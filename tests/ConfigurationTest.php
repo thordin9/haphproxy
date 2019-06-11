@@ -10,12 +10,15 @@ use Jalle19\HaPHProxy\Writer;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
+use PHPUnit\Framework\TestCase;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Class ConfigurationTest
  * @package Jalle19\HaPHProxy\Test
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
 
 	/**

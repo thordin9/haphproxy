@@ -1,0 +1,25 @@
+---
+- name: Download composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: "{{ composer_ins_path }}"
+  tags:
+    - compose
+- name: Install composer
+  command: "{{ item }}"
+  with_items:
+    - "php {{ composer_ins_path }}"
+    - mv composer.phar /usr/local/bin/composer
+  tags:
+    - compose
+- name: Remove composer installer
+  file:
+    path: "{{ composer_ins_path }}"
+    state: absent
+  tags:
+    - compose
+- name: Print composer version
+  command: composer -v
+  register: version
+- debug: msg="{{ version.stdout_lines }}"
+...

@@ -1,0 +1,19 @@
+---
+- name: "Run all"
+  hosts: all
+  gather_facts: False
+  become: yes
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qqy python-minimal)"
+      register: output
+      changed_when: output.stdout != ""
+    - name: Gathering Facts
+      setup:
+  vars:
+    composer_ins_path: "/tmp/composer.php"
+    phpu_ins_path: "/tmp/phpunit-8.0.phar"
+  roles:
+    - add_dependencies
+    - composer
+    - phpunit

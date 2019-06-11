@@ -7,12 +7,15 @@ use Jalle19\HaPHProxy\Parameter\Parameter;
 use Jalle19\HaPHProxy\Parser;
 use Jalle19\HaPHProxy\Section\GlobalSection;
 use Jalle19\HaPHProxy\Writer;
+use PHPUnit\Framework\TestCase;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Class WriterTest
  * @package Jalle19\HaPHProxy\Test
  */
-class WriterTest extends \PHPUnit_Framework_TestCase
+class WriterTest extends TestCase
 {
 
 	/**

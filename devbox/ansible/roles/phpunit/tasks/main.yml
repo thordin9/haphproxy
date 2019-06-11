@@ -1,0 +1,21 @@
+---
+- name: Download phpunit
+  get_url:
+    url: "https://phar.phpunit.de/phpunit-8.0.phar"
+    dest: "{{ phpu_ins_path }}"
+  tags:
+    - phpunit
+- name: Install phpunit
+  command: "{{ item }}"
+  with_items:
+    - "chmod +x {{ phpu_ins_path }}"
+    - "mv {{ phpu_ins_path }} /usr/local/bin/phpunit"
+  tags:
+    - phpunit
+- name: Remove phpunit installer
+  file:
+    path: "{{ phpu_ins_path }}"
+    state: absent
+  tags:
+    - phpunit
+...
